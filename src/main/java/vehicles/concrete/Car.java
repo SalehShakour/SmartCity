@@ -4,6 +4,11 @@ import vehicles.interfaces.Vehicle;
 
 import java.util.ArrayList;
 
+/**
+ * <h1>Car class</h1>
+ * This class implements the vehicle concept and is supposed to present a car and its possible
+ * methods, attribute, etc.
+ */
 public class Car implements Vehicle {
     static final double MAX_FUEL = 100.0;
     double positionX;
@@ -14,11 +19,16 @@ public class Car implements Vehicle {
     Plaque plaque;
     ArrayList<Boolean> tiresStatus;
     boolean retired;
+
+    /**
+     * This method is designed to return the builder object that will be used to build and set up
+     * car objects.
+     * @return The builder object
+     */
     public static VehicleBuilder builder() {
         CarBuilder carBuilder = new CarBuilder();
         return carBuilder;
     }
-
     @Override
     public void move(double x, double y) {
         System.out.println("Car by plaque " + this.plaque + " Started moving from point ("
@@ -43,6 +53,9 @@ public class Car implements Vehicle {
         System.out.println("Car by plaque " + this.plaque + " refueled, current fuel is " + this.fuel);
     }
 
+    /**
+     * <h1>Implementing Car builder class will be used to set up car objects.</h1>
+     */
     static class CarBuilder implements VehicleBuilder {
         private Car car;
 

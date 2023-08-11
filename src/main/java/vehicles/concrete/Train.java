@@ -2,7 +2,12 @@ package vehicles.concrete;
 
 import vehicles.interfaces.Vehicle;
 
-
+/**
+ * <h1>Train class</h1>
+ * This class will be representing the train entity which(in our imaginery smart city) is consisting
+ * of only 1 train, meaning that our city does not have any more trains than 1. So we must never have
+ * more than one train, therefore we use the design pattern of "Singleton"
+ */
 public class Train implements Vehicle {
     static final double MAX_FUEL = 300.0;
     private static Train train;

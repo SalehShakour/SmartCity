@@ -1,5 +1,9 @@
 package vehicles.concrete;
 
+/**
+ * <h1>Plaque Class</h1>
+ * This class implements the plaque concept in the format of iranian plaques
+ */
 public class Plaque {
     private Character letter;
     private Integer number;
