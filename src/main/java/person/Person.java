@@ -17,6 +17,18 @@ public abstract class Person {
     private String phoneNumber;
     private String email;
 
+    public Person(String firstName, String lastName, int age, Gender gender, LocalDate birthday, String address, String phoneNumber, String email, BloodType bloodType) {
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.age = age;
+        this.gender = gender;
+        this.birthday = birthday;
+        this.address = address;
+        this.phoneNumber = phoneNumber;
+        this.email = email;
+        this.bloodType = bloodType;
+    }
+
     /**
      * A regular expression pattern for validating email addresses.
      * <p>
