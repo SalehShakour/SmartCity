@@ -5,7 +5,7 @@ public class Room {
     private int roomNumber;
     private boolean reserved = false;
     private int capacity;
-    private float pricePerNight;
+    private double pricePerNight;
 
     public Room(int roomNumber, int capacity, float pricePerNight) {
         this.roomNumber = roomNumber;
@@ -37,11 +37,11 @@ public class Room {
         this.capacity = capacity;
     }
 
-    public float getPricePerNight() {
+    public double getPricePerNight() {
         return pricePerNight;
     }
 
-    public void setPricePerNight(float pricePerNight) {
+    public void setPricePerNight(double pricePerNight) {
         this.pricePerNight = pricePerNight;
     }
 
