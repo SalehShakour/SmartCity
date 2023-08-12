@@ -11,6 +11,7 @@ import java.util.ArrayList;
  */
 public class Car implements Vehicle {
     static final double MAX_FUEL = 100.0;
+    private Engine CarEngine;
     private double positionX;
     private double positionY;
     private double fuel;
@@ -23,12 +24,14 @@ public class Car implements Vehicle {
     /**
      * This method is designed to return the builder object that will be used to build and set up
      * car objects.
+     *
      * @return The builder object
      */
     public static VehicleBuilder builder() {
         CarBuilder carBuilder = new CarBuilder();
         return carBuilder;
     }
+
     @Override
     public void move(double x, double y) {
         System.out.println("Car by plaque " + this.getPlaque() + " Started moving from point ("
@@ -117,6 +120,14 @@ public class Car implements Vehicle {
         this.retired = retired;
     }
 
+    public Engine getCarEngine() {
+        return CarEngine;
+    }
+
+    public void setCarEngine(Engine carEngine) {
+        CarEngine = carEngine;
+    }
+
     /**
      * <h1>Implementing Car builder class will be used to set up car objects.</h1>
      */
@@ -162,7 +173,16 @@ public class Car implements Vehicle {
             return this;
         }
 
-        public CarBuilder retired(boolean retired){
+        public CarBuilder engine(Engine engine) throws RuntimeException {
+            if (engine instanceof CarEngine) {
+                this.car.setCarEngine(engine);
+                return this;
+            } else {
+                throw new RuntimeException();
+            }
+        }
+
+        public CarBuilder retired(boolean retired) {
             this.car.setRetired(retired);
             return this;
         }

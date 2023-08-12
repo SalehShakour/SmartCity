@@ -1,6 +1,7 @@
 package vehicles.concrete;
 
 import vehicles.interfaces.Maintainance;
+import vehicles.interfaces.Vehicle;
 
 import java.util.ArrayList;
 
@@ -43,5 +44,16 @@ public class CarMaintenance implements Maintainance {
     @Override
     public void retire() {
         this.car.setRetired(true);
+    }
+
+    @Override
+    public boolean compare(Vehicle vehicle) throws RuntimeException {
+        if (!(vehicle instanceof Car)) {
+            throw new RuntimeException();
+        }
+        //This line only shows off the polymorphism, the parameter can be any number
+        vehicle.refuel(Car.MAX_FUEL);
+        Car newCar = (Car) vehicle;
+        return (this.car.getEngineStatus() == newCar.getEngineStatus()) ? true : false;
     }
 }

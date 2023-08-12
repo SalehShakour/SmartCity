@@ -24,4 +24,11 @@ public interface Maintainance {
      * and let the garbage collector to just dispose of it
      */
     void retire();
+
+    /**
+     * This method gets a vehicle and compares it to the vehicle it is currently maintaining
+     * @param vehicle Vehicle to be compared to the current one
+     * @return true if they are similar, false if they are not.
+     */
+    boolean compare(Vehicle vehicle) throws RuntimeException;
 }
