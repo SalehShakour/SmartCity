@@ -11,11 +11,12 @@ import vehicles.interfaces.Vehicle;
 public class Train implements Vehicle {
     static final double MAX_FUEL = 300.0;
     private static Train train;
-    double positionX;
-    double positionY;
-    double fuel;
-    Status engineStatus;
-    boolean retired;
+    private double positionX;
+    private double positionY;
+    private double fuel;
+    private Status engineStatus;
+    private boolean retired;
+
     private Train() {
     }
 
@@ -31,13 +32,17 @@ public class Train implements Vehicle {
         return trainBuilder;
     }
 
+    public static void setTrain(Train train) {
+        Train.train = train;
+    }
+
     @Override
     public void move(double x, double y) {
         System.out.println("train Started moving from point ("
-                + this.positionX + "," + this.positionY + ") to point ("
+                + this.getPositionX() + "," + this.getPositionY() + ") to point ("
                 + x + "," + y);
-        this.positionX = x;
-        this.positionY = y;
+        this.setPositionX(x);
+        this.setPositionY(y);
     }
 
     @Override
@@ -47,12 +52,52 @@ public class Train implements Vehicle {
 
     @Override
     public void refuel(double fuel) {
-        if (this.fuel >= MAX_FUEL) {
+        if (this.getFuel() >= MAX_FUEL) {
             System.out.println("train already refueled.");
         }
-        this.fuel += fuel;
-        if (this.fuel > MAX_FUEL) this.fuel = MAX_FUEL;
-        System.out.println("train refueled, current fuel is " + this.fuel);
+        this.setFuel(this.getFuel() + fuel);
+        if (this.getFuel() > MAX_FUEL) this.setFuel(MAX_FUEL);
+        System.out.println("train refueled, current fuel is " + this.getFuel());
+    }
+
+    public double getPositionX() {
+        return positionX;
+    }
+
+    public void setPositionX(double positionX) {
+        this.positionX = positionX;
+    }
+
+    public double getPositionY() {
+        return positionY;
+    }
+
+    public void setPositionY(double positionY) {
+        this.positionY = positionY;
+    }
+
+    public double getFuel() {
+        return fuel;
+    }
+
+    public void setFuel(double fuel) {
+        this.fuel = fuel;
+    }
+
+    public Status getEngineStatus() {
+        return engineStatus;
+    }
+
+    public void setEngineStatus(Status engineStatus) {
+        this.engineStatus = engineStatus;
+    }
+
+    public boolean isRetired() {
+        return retired;
+    }
+
+    public void setRetired(boolean retired) {
+        this.retired = retired;
     }
 
     static class TrainBuilder implements VehicleBuilder {
@@ -63,27 +108,27 @@ public class Train implements Vehicle {
         }
 
         public TrainBuilder positionX(double positionX) {
-            this.train.positionX = positionX;
+            this.train.setPositionX(positionX);
             return this;
         }
 
         public TrainBuilder positionY(double positionY) {
-            this.train.positionY = positionY;
+            this.train.setPositionY(positionY);
             return this;
         }
 
         public TrainBuilder fuel(double fuel) {
-            this.train.fuel = fuel;
+            this.train.setFuel(fuel);
             return this;
         }
 
         public TrainBuilder engineStatus(Status engineStatus) {
-            this.train.engineStatus = engineStatus;
+            this.train.setEngineStatus(engineStatus);
             return this;
         }
 
         public TrainBuilder retired(boolean retired) {
-            this.train.retired = retired;
+            this.train.setRetired(retired);
             return this;
         }
 
