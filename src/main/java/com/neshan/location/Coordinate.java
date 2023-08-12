@@ -1,4 +1,4 @@
-package utils;
+package com.neshan.location;
 
 public class Coordinate {
 

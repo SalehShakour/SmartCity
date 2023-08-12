@@ -1,7 +1,7 @@
-package places;
+package com.neshan.place;
 
-import utils.Address;
-import utils.Coordinate;
+import com.neshan.location.Address;
+import com.neshan.location.Coordinate;
 
 public abstract class Place {
 
